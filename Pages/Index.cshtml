@@ -1,0 +1,57 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To the sample project</h1>
+</div>
+
+<div>
+    <p>
+        Have a look at the code behind and you will notice that all has been reduced to a single.
+    </p>
+    <p>
+        In your debugger you will have noticed that the page size was reduced by a large factor.
+    </p>
+    <p>
+        The more text you have in your website the smaller it gets.
+    </p>
+</div>
+
+<div id="clickme">
+    Let's animate something and <b>click here</b> to see if JavaScript still works
+</div>
+<img id="image1" src="~/Images/1.jpg" alt="" width="100" height="123" style="position: relative; left: 10px;">
+<h2>Limitations</h2>
+<p>
+    single line Code comments in JavaScript "//" should be avoided as this is currently not supported. Multi line code /* like this is */ even if it is written in a single line
+</p>
+
+<h2>How to use</h2>
+<p>
+    Download the HtmlMinify package from NuGet
+</p>
+<p>
+    Update Startup.cs by adding the using statement and updating Configure by adding app.UseHTMLMinification() as shown below.
+    <br />
+    <img src="~/Images/Configuration.png" />
+</p>
+
+@section scripts
+{
+    <script>
+        /*
+        this type of comment is supported
+        */
+        $("#clickme").click(function () {
+            $("#image1").animate({
+                opacity: 0.25,
+                left: "+=50",
+                height: "toggle"
+            }, 1000, function () {
+            });
+        });
+    </script>
+}
